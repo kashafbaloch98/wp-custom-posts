@@ -1,0 +1,23 @@
+add_shortcode ('kashaf', 'myposts');
+function myposts(){
+	
+	 echo "kashaf"."<br>";
+$args = array(
+	
+	'post_type' =>'post',
+// 	'post_status' => 'publish',
+// 	'posts_per_page' => '5',
+// 	'order' => 'DESC',
+);
+$myposts = new WP_Query($args);
+while($myposts->have_posts()){
+	$myposts->the_post();
+// 	echo get_the_post_thumbnail()."<br>";//
+ 	echo "<a href='".get_permalink(get_the_ID())."'>'".get_the_post_thumbnail()."'</a>"."<br>";
+	echo get_the_title()."<br>";
+	echo the_excerpt()."<br>";
+	echo get_the_ID()."<br>";
+	echo "<a href='".get_permalink(get_the_ID())."'>Read more</a>"."<br>";
+
+}
+}
